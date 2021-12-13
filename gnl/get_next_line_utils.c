@@ -90,7 +90,7 @@ void	*ft_realloc(void *ptr, int size, int newsize)
 	int		i;
 
 	tmp = (char *)ptr;
-	new = malloc(sizeof(char) * (newsize) + 1);
+	new = malloc(sizeof(char) * (newsize + 1));
 	if (new == NULL)
 	{
 		if (ptr && size != 0)
@@ -105,10 +105,11 @@ void	*ft_realloc(void *ptr, int size, int newsize)
 	}
 	while (i < newsize)
 		new[i++] = 0;
-	if (ptr && size != 0)
+	if (ptr)
 	{
-		ft_bzero(ptr, size);
+		//ft_bzero(ptr, size);
 		free(ptr);
+		ptr = 0;
 	}
 	return (new);
 }
@@ -125,8 +126,7 @@ char	*ft_strjoin_to_l(char *line, char *buff, int key)
 		return (NULL);
 	}
 	if (!line || !buff)
-		return (NULL);
-	key = key +1;
+		return (NULL);	
 	ret = ft_realloc(line, ft_strclen(line, '\n'), (ft_strclen(line, '\n') + ft_strclen(buff, '\n')));
 	if (ret == NULL)
 		return (NULL);

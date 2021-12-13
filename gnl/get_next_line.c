@@ -45,6 +45,7 @@ char	*get_next_line(int fd)
 	int		endlpos;
 	
 	line = malloc(1);
+	line[0] = 0;
 	if (fd < 0 || fd > FD_NBR || BUFFER_SIZE <= 0)
 			return (NULL);
 	while (ft_get_endl(buff[fd]) == -1)
@@ -55,9 +56,12 @@ char	*get_next_line(int fd)
 			return (NULL);
 		ft_bzero(buff[fd], BUFFER_SIZE + 1);
 		readreturn = read(fd, buff[fd], BUFFER_SIZE);
+	//	printf("buff = %s\n", buff[fd]);
+	//	printf("readret = %d\n", readreturn);
 		if (readreturn <= 0)
 		{
 			line = ft_strjoin_to_l(line, buff[fd], 1);
+		//	printf("line ap join = %s\n", line);
 			return (line);
 		}
 	}
@@ -68,7 +72,7 @@ char	*get_next_line(int fd)
 	ft_strlcpy(buff[fd] , buff[fd] + endlpos + 1, BUFFER_SIZE);
 	return (line);
 }
-/*
+
 int main()
 {
 	int	fd;
@@ -85,4 +89,3 @@ int main()
 	close (fd);
 	return (0);
 }
-*/
