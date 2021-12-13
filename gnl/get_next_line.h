@@ -1,6 +1,6 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFFER_SIZE 2
+//# define BUFFER_SIZE 42
 # define FD_NBR 256
 
 # include <unistd.h>
@@ -17,4 +17,5 @@ char	*ft_strcdup(char *str, char c);
 char	*ft_strjoin_to_l(char *line, char *buff, int key);
 char    *get_next_line(int fd);
 void	*ft_realloc(void *ptr, int size, int newsize);
+int ft_strlcpy(char *dst,char *src, int dst_size);
 #endif
