@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maddi <maddi@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/14 16:35:15 by maddi             #+#    #+#             */
+/*   Updated: 2021/12/14 17:35:29 by maddi            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 int	ft_strclen(char *str, char c)
@@ -60,7 +72,9 @@ char	*ft_strjoin_to_l(char *line, char *buff, int key)
 {
 	char	*ret;
 	int		i;
+	int		newsize;
 
+	newsize = (ft_strclen(line, '\n') + ft_strclen(buff, '\n');
 	i = 0;
 	if (*line == 0 && *buff == 0 && key == 1)
 	{
@@ -69,7 +83,7 @@ char	*ft_strjoin_to_l(char *line, char *buff, int key)
 	}
 	if (!line || !buff)
 		return (NULL);
-	ret = ft_realloc(line, ft_strclen(line, '\n'), (ft_strclen(line, '\n') + ft_strclen(buff, '\n')));
+	ret = ft_realloc(line, ft_strclen(line, '\n'), newsize));
 	if (ret == NULL)
 		return (NULL);
 	while (ret[i])
@@ -82,9 +96,11 @@ char	*ft_strjoin_to_l(char *line, char *buff, int key)
 	return (ret);
 }
 
-int	ft_strlcpy(char *dst,char *src, int dst_size)
+int	ft_strlcpy(char *dst, char *src, int dst_size)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	if (!dst || !src)
 		return (0);
 	if (dst_size == 0)
